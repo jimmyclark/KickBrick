@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
@@ -61,9 +60,9 @@ public class GameMenu {
         titleBmpX = (float)ConstantValue.SCREEN_WIDTH/2 - (float)titleBmpWidth/2;
         titleBmpY = (float)ConstantValue.SCREEN_HEIGHT/4 - (float)titleBmpHeight/4;
 
-        titleNewY = (float)ConstantValue.SCREEN_HEIGHT/4 + 130;
+        titleNewY = (float)ConstantValue.SCREEN_HEIGHT/2 - 60 ;
 
-        titleContinueY = (float)ConstantValue.SCREEN_HEIGHT/2 +30;
+        titleContinueY = (float)ConstantValue.SCREEN_HEIGHT/2 + 30;
         titleRankY = (float)ConstantValue.SCREEN_HEIGHT/2 + 120;
         titleExitY = (float)ConstantValue.SCREEN_HEIGHT/2 + 200;
 

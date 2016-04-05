@@ -3,6 +3,7 @@ package com.clarkwu.view;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -31,6 +32,10 @@ public class GameRoom {
     private static final String AUDIO_TITLE = "AUDIO";
     private static final String ROUND_TITLE = "TITLE";
 
+    private static final int MENU_TEXT_SIZE = 30;
+
+    private float highScoreTitleX,highScoreTitleY;
+
     public void init(){
         gameBgNames = new int[]{R.mipmap.bg1};
 
@@ -41,6 +46,9 @@ public class GameRoom {
 
         gameRoomBgW = (float)((float)gameRoomBgW * (float)ConstantValue.SCREEN_DENSITY);
         gameRoomBgH = (float)((float)gameRoomBgH * (float)ConstantValue.SCREEN_DENSITY);
+
+        highScoreTitleX = gameRoomBgW + 30;
+        highScoreTitleY = 40;
 
 //        myBall = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.ball);
 //
@@ -57,6 +65,10 @@ public class GameRoom {
         RectF screenRect = new RectF(0,0,0+gameRoomBgW,0+gameRoomBgH);
         canvas.drawBitmap(gameRoomBg,picRect,screenRect,paint);
 
+        paint.setColor(Color.rgb(114, 16, 17));
+        paint.setTextSize(MENU_TEXT_SIZE);
+
+        canvas.drawText(HIGHSCORE_TITLE, highScoreTitleX, highScoreTitleY,paint);
     }
 
 }
