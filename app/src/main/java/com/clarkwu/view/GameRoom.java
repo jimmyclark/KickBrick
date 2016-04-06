@@ -65,7 +65,7 @@ public class GameRoom {
         RectF screenRect = new RectF(0,0,0+gameRoomBgW,0+gameRoomBgH);
         canvas.drawBitmap(gameRoomBg,picRect,screenRect,paint);
 
-        paint.setColor(Color.rgb(114, 16, 17));
+        paint.setColor(Color.rgb(255, 0, 0));
         paint.setTextSize(MENU_TEXT_SIZE);
 
         canvas.drawText(HIGHSCORE_TITLE, highScoreTitleX, highScoreTitleY,paint);
