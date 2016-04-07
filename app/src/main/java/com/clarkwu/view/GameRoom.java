@@ -136,7 +136,7 @@ public class GameRoom {
         canvas.drawText(ConstantValue.current_score+ "",firstUpTextX,firstUpTextY , paint);
         canvas.drawText(ConstantValue.current_stage+ "",stageTextX,stageTextY , paint);
 
-        gameLifeX =  highScoreTitleX + highScoreTitleW + 50;
+        gameLifeX =  highScoreTitleX + highScoreTitleW + 20;
         gameLifeY = lifeTitleY;
         for(int i = 0 ;i< ConstantValue.current_life;i++){
             Rect life_picRect = new Rect(0,0,gameLife.getWidth(),gameLife.getHeight());
@@ -148,7 +148,6 @@ public class GameRoom {
             }
 
             canvas.drawBitmap(gameLife,life_picRect,life_screenRect,paint);
-
         }
     }
 
