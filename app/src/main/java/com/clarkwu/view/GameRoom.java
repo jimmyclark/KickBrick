@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.clarkwu.constants.ConstantValue;
 import com.clarkwu.kickbrick.R;
@@ -19,10 +20,16 @@ public class GameRoom {
 
     private Bitmap gameRoomBg;
     private Bitmap gameLife;
+    private Bitmap musicBg;
+    private Bitmap music;
+    private Bitmap audioBg;
+    private Bitmap audio;
+
 //    private Bitmap myBlock;
 //    private Bitmap myBall;
 
-    private float gameRoomBgW,gameRoomBgH,gameLifeW,gameLifeH;
+    private float gameRoomBgW,gameRoomBgH,gameLifeW,gameLifeH,musicBgW,musicBgH,
+            musicW,musicH,audioBgW,audioBgH,audioW,audioH;
 //    private float myBlockX,myBlockY,myBlockW,myBlockH;
 //    private float myBallX,myBallY,myBallW,myBallH;
 
@@ -37,17 +44,18 @@ public class GameRoom {
 
     private int highScore = 0;
 
-
     private float highScoreTitleX,highScoreTitleY,highScoreTitleW,
-    firstUpTitleX,firstUpTitleY,firstUpTitleW,
-    lifeTitleX,lifeTitleY,lifeTitleW,
-    musicTitleX,musicTitleY,musicTitleW,
-    audioTitleX,audioTitleY,audioTitleW,
-    roundTitleX,roundTitleY,roundTitleW,
-    highScoreTextX,highScoreTextY,highScoreTextW,
-    firstUpTextX,firstUpTextY,firstUpTextW,
-    stageTextX,stageTextY,stageTextW,
-    gameLifeX,gameLifeY;
+            firstUpTitleX,firstUpTitleY,firstUpTitleW,
+            lifeTitleX,lifeTitleY,lifeTitleW,
+            musicTitleX,musicTitleY,musicTitleW,
+            audioTitleX,audioTitleY,audioTitleW,
+            roundTitleX,roundTitleY,roundTitleW,
+            highScoreTextX,highScoreTextY,highScoreTextW,
+            firstUpTextX,firstUpTextY,firstUpTextW,
+            stageTextX,stageTextY,stageTextW,
+            gameLifeX,gameLifeY,musicBgX,musicBgY,
+            musicX,musicY,audioBgX,audioBgY,audioX,audioY;
+
 
 
     public void init(){
@@ -55,6 +63,10 @@ public class GameRoom {
 
         gameRoomBg = BitmapFactory.decodeResource(ConstantValue.main.getResources(),gameBgNames[(ConstantValue.current_stage-1)%2]);
         gameLife = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.life);
+        musicBg = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.progress_bg);
+        music = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.progress);
+        audioBg = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.progress_bg);
+        audio = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.progress);
 
         gameRoomBgW = ((float)gameRoomBg.getWidth() / (float)ConstantValue.DEFAULT_DENSITY) ;
         gameRoomBgH = (float)gameRoomBg.getHeight() / (float)ConstantValue.DEFAULT_DENSITY;
@@ -67,6 +79,30 @@ public class GameRoom {
 
         gameLifeW = (float)((float)gameLifeW * (float)ConstantValue.SCREEN_DENSITY);
         gameLifeH = (float)((float)gameLifeH * (float)ConstantValue.SCREEN_DENSITY);
+
+        musicBgW = (float)musicBg.getWidth() / (float)ConstantValue.DEFAULT_DENSITY;
+        musicBgH = (float)musicBg.getHeight() / (float) ConstantValue.DEFAULT_DENSITY;
+
+        musicBgW = (float)((float)musicBgW * (float)ConstantValue.SCREEN_DENSITY);
+        musicBgH = (float)((float)musicBgH * (float)ConstantValue.SCREEN_DENSITY);
+
+        musicW = (float)music.getWidth() / (float)ConstantValue.DEFAULT_DENSITY;
+        musicH = (float)music.getHeight() / (float) ConstantValue.DEFAULT_DENSITY;
+
+        musicW = (float)((float)musicW * (float)ConstantValue.SCREEN_DENSITY);
+        musicH = (float)((float)musicH * (float)ConstantValue.SCREEN_DENSITY);
+
+        audioBgW = (float)audioBg.getWidth() / (float)ConstantValue.DEFAULT_DENSITY;
+        audioBgH = (float)audioBg.getHeight() / (float) ConstantValue.DEFAULT_DENSITY;
+
+        audioBgW = (float)((float)audioBgW * (float)ConstantValue.SCREEN_DENSITY);
+        audioBgH = (float)((float)audioBgH * (float)ConstantValue.SCREEN_DENSITY);
+
+        audioW = (float)audio.getWidth() / (float)ConstantValue.DEFAULT_DENSITY;
+        audioH = (float)audio.getHeight() / (float) ConstantValue.DEFAULT_DENSITY;
+
+        audioW = (float)((float)audioW * (float)ConstantValue.SCREEN_DENSITY);
+        audioH = (float)((float)audioH * (float)ConstantValue.SCREEN_DENSITY);
 
 //        myBall = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.ball);
 //
@@ -96,11 +132,11 @@ public class GameRoom {
 
         lifeTitleW = paint.measureText(LIFE_TITLE);
         lifeTitleX = highScoreTitleX + (highScoreTitleW - lifeTitleW)/2;
-        lifeTitleY = ConstantValue.SCREEN_HEIGHT / 13 * 3;
+        lifeTitleY = (ConstantValue.SCREEN_HEIGHT / 13 * 3 + ConstantValue.SCREEN_HEIGHT / 13 * 4 )/2;
 
         musicTitleW = paint.measureText(MUSIC_TITLE);
         musicTitleX = highScoreTitleX + (highScoreTitleW - musicTitleW)/2;
-        musicTitleY = ConstantValue.SCREEN_HEIGHT / 13 * 5;
+        musicTitleY = (ConstantValue.SCREEN_HEIGHT / 13 * 5 + ConstantValue.SCREEN_HEIGHT/13 * 6)/2;
 
         audioTitleW = paint.measureText(AUDIO_TITLE);
         audioTitleX = highScoreTitleX + (highScoreTitleW - audioTitleW)/2;
@@ -137,18 +173,46 @@ public class GameRoom {
         canvas.drawText(ConstantValue.current_stage+ "",stageTextX,stageTextY , paint);
 
         gameLifeX =  highScoreTitleX + highScoreTitleW + 20;
-        gameLifeY = lifeTitleY;
+
+        gameLifeY = ConstantValue.SCREEN_HEIGHT/13 * 3 ;
         for(int i = 0 ;i< ConstantValue.current_life;i++){
             Rect life_picRect = new Rect(0,0,gameLife.getWidth(),gameLife.getHeight());
             RectF life_screenRect = null;
             if(i > 2){
-                life_screenRect = new RectF(gameLifeX + (i%3)*90,ConstantValue.SCREEN_HEIGHT / 13 * 4,gameLifeX + (i%3)*90+gameLifeW,gameLifeY+gameLifeH);
+                life_screenRect = new RectF(gameLifeX + (i%3)*90,ConstantValue.SCREEN_HEIGHT / 13 * 4 - 5,gameLifeX + (i%3)*90+gameLifeW,ConstantValue.SCREEN_HEIGHT / 13 * 4+gameLifeH - 5);
             }else{
-                life_screenRect = new RectF(gameLifeX + (i%3)*90,gameLifeY,gameLifeX + (i%3)*90+gameLifeW,gameLifeY+gameLifeH);
+                life_screenRect = new RectF(gameLifeX + (i%3)*90,gameLifeY-10,gameLifeX + (i%3)*90+gameLifeW,gameLifeY+gameLifeH-10);
             }
 
             canvas.drawBitmap(gameLife,life_picRect,life_screenRect,paint);
         }
+
+        musicBgX = musicTitleX + musicTitleW + 20;
+        musicBgY = ConstantValue.SCREEN_HEIGHT / 13 * 5 - 5;
+        Rect musicBg_picRect = new Rect(0,0,musicBg.getWidth(),musicBg.getHeight());
+        RectF musicBg_screenRect = new RectF(musicBgX,musicBgY,musicBgX + musicBgW,musicBgY + musicBgH);
+        canvas.drawBitmap(musicBg,musicBg_picRect,musicBg_screenRect,paint);
+
+        musicX = musicTitleX + musicTitleW + 20;
+        musicY = ConstantValue.SCREEN_HEIGHT / 13 * 5 - 5;
+        int currentMWidth = (int)(music.getWidth() * (float)(ConstantValue.current_music/(float)100));
+        Rect music_picRect = new Rect(0,0,currentMWidth,music.getHeight());
+        RectF music_screenRect = new RectF(musicX,musicY,musicX + music.getWidth() * (float)(ConstantValue.current_music/(float)100),musicY + musicH);
+        canvas.drawBitmap(music,music_picRect,music_screenRect,paint);
+
+        audioBgX = audioTitleX + audioTitleW + 20;
+        musicBgY = ConstantValue.SCREEN_HEIGHT / 13 * 6 - 5;
+        Rect audioBg_picRect = new Rect(0,0,audioBg.getWidth(),audioBg.getHeight());
+        RectF audioBg_screenRect = new RectF(audioBgX,audioBgY,audioBgX + audioBgW,audioBgY + audioBgH);
+        canvas.drawBitmap(audioBg,audioBg_picRect,audioBg_screenRect,paint);
+
+        audioX = audioTitleX + audioTitleW + 20;
+        audioY = ConstantValue.SCREEN_HEIGHT / 13 * 6 - 5;
+        int currentAWidth = (int)(audio.getWidth() * (float)(ConstantValue.current_audio/(float)100));
+        Rect audio_picRect = new Rect(0,0,currentAWidth,audio.getHeight());
+        RectF audio_screenRect = new RectF(audioX,audioY,audioX + audio.getWidth() * (float)(ConstantValue.current_audio/(float)100),audioY + audioH);
+        canvas.drawBitmap(audio,audio_picRect,audio_screenRect,paint);
+
     }
 
 }
