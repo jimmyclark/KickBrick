@@ -25,6 +25,8 @@ public class ConstantValue {
     public static MyHandler myHandler;
 
     public static int current_stage = 1;
+    public static int current_score = 0;
+    public static int current_life = 6;
 
     public static MainActivity main;
 

@@ -19,7 +19,7 @@ public class GamePause {
                 firstUpX,firstUpTextX,
                 lifeX,lifeTextX;
     private static final String HIGH_SCORE_STR = "HIGH SCORE";
-    private static final String HIGH_SCORE_TEXT_STR = "000000";
+    private static final String HIGH_SCORE_TEXT_STR = "00";
     private static final String FIRST_UP = "1UP";
     private static final String FIRST_UP_TEXT_STR = "00";
     private static final String LIFE_STR = "LIFE";
