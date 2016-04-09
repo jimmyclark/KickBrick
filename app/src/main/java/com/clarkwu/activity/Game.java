@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -135,6 +134,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback,Runnable
                gameMenu.onTouchEvent(event);
                break;
            case ConstantValue.GAMEPAUSE_STATE:
+               break;
+           case ConstantValue.GAMEING_STATE:
+               gameRoom.onTouchEvent(event);
                break;
        }
         return true;

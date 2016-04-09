@@ -7,11 +7,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.clarkwu.constants.ConstantValue;
+import com.clarkwu.entity.GameLife;
+import com.clarkwu.entity.GameScore;
 import com.clarkwu.kickbrick.R;
 import com.clarkwu.utils.BasicUtils;
 
@@ -61,9 +62,9 @@ public class GameMenu {
         titleBmpX = (float)ConstantValue.SCREEN_WIDTH/2 - (float)titleBmpWidth/2;
         titleBmpY = (float)ConstantValue.SCREEN_HEIGHT/4 - (float)titleBmpHeight/4;
 
-        titleNewY = (float)ConstantValue.SCREEN_HEIGHT/2 - 60;
+        titleNewY = (float)ConstantValue.SCREEN_HEIGHT/2 - 60 ;
 
-        titleContinueY = (float)ConstantValue.SCREEN_HEIGHT/2 +30;
+        titleContinueY = (float)ConstantValue.SCREEN_HEIGHT/2 + 30;
         titleRankY = (float)ConstantValue.SCREEN_HEIGHT/2 + 120;
         titleExitY = (float)ConstantValue.SCREEN_HEIGHT/2 + 200;
 
@@ -193,6 +194,8 @@ public class GameMenu {
                 continueFlag = false;
                 exitFlag = false;
                 rankFlag = false;
+                GameLife.getInstance().setLifeValue(ConstantValue.MAX_LIFE);
+                GameScore.getInstance().setScoreValue(0);
                 break;
             case 1:
                 newFlag = false;
