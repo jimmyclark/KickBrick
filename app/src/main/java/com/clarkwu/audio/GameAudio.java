@@ -29,6 +29,7 @@ public class GameAudio {
     private float audioTitleX,audioTitleY,audioTitleW;
     private Bitmap audioBg;
     private Bitmap audio;
+    private boolean isPressed = false;
 
     public static GameAudio getInstance(){
         return gameAudio;
@@ -78,8 +79,14 @@ public class GameAudio {
         audioX = audioTitleX + audioTitleW + 20;
         audioY = (ConstantValue.SCREEN_HEIGHT / 10 * 6 + ConstantValue.SCREEN_HEIGHT/10 * 7)/2;
         int currentAWidth = (int)(audio.getWidth() * (float)(audioValue/(float)100));
+
         Rect audio_picRect = new Rect(0,0,currentAWidth,audio.getHeight());
         RectF audio_screenRect = new RectF(audioX,audioY,audioX + audio.getWidth() * (float)(audioValue/(float)100),audioY + audioH);
+        if(isPressed){
+            paint.setColor(Color.GRAY);
+        }else{
+            paint.setColor(Color.WHITE);
+        }
         canvas.drawBitmap(audio,audio_picRect,audio_screenRect,paint);
     }
 
@@ -88,7 +95,10 @@ public class GameAudio {
             if(event.getX() >= audioX && event.getX() <= audioX + audioW && event.getY() >= audioY && event.getY() <= audioY + audioH){
                 float currentWidth = event.getX() - audioX;
                 audioValue = (int)(100 * currentWidth / audioW);
+                isPressed = true;
             }
+        }else{
+            isPressed = false;
         }
     }
 }

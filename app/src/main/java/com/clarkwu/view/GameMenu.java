@@ -138,7 +138,6 @@ public class GameMenu {
             canvas.drawText(HIGH_SCORE_TEXT_STR, titleBmpX + (titleBmpWidth - paint.measureText(HIGH_SCORE_TEXT_STR)) / 2, titleHighScoreTextY, paint);
         }
 
-
         canvas.drawText(FIRST_UP_TEXT_STR,titleFirstUpTextX,titleHighScoreTextY,paint);
         canvas.drawText(LIE_STR_TEXT,titleLifeTextX,titleHighScoreTextY,paint);
 
@@ -223,8 +222,6 @@ public class GameMenu {
                 break;
         }
     }
-
-
 
     private boolean isLastGame(){
         return false;

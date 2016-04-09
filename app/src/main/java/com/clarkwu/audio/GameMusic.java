@@ -29,6 +29,8 @@ public class GameMusic {
     private float musicBgX,musicBgY,musicX,musicY;
     private float musicTitleX,musicTitleY,musicTitleW;
 
+    private boolean isPressed = false;
+
     public int getMusicValue() {
         return musicValue;
     }
@@ -77,8 +79,14 @@ public class GameMusic {
         musicX = musicTitleX + musicTitleW + 20;
         musicY = ConstantValue.SCREEN_HEIGHT / 10 * 5 + 10;
         int currentMWidth = (int)(music.getWidth() * (float)(musicValue/(float)100));
+
         Rect music_picRect = new Rect(0,0,currentMWidth,music.getHeight());
         RectF music_screenRect = new RectF(musicX,musicY,musicX + music.getWidth() * (float)(musicValue/(float)100),musicY + musicH);
+        if(isPressed){
+            paint.setColor(Color.GRAY);
+        }else{
+            paint.setColor(Color.WHITE);
+        }
         canvas.drawBitmap(music,music_picRect,music_screenRect,paint);
     }
 
@@ -87,7 +95,10 @@ public class GameMusic {
             if(event.getX() >= musicX && event.getX() <= musicX + musicW && event.getY() >= musicY && event.getY() <= musicY + musicH){
                 float currentWidth = event.getX() - musicX;
                 musicValue = (int)(100 * currentWidth / musicW);
+                isPressed = true;
             }
+        }else{
+            isPressed = false;
         }
     }
 

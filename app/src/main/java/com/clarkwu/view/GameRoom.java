@@ -53,6 +53,7 @@ public class GameRoom {
     public void onTouchEvent(MotionEvent event){
        GameMusic.getInstance().onTouchEvent(event);
        GameAudio.getInstance().onTouchEvent(event);
+       GameArea.getInstance().onTouchEvent(event);
     }
 
 }
