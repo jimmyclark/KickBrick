@@ -10,6 +10,7 @@ import android.graphics.RectF;
 import android.view.MotionEvent;
 
 import com.clarkwu.constants.ConstantValue;
+import com.clarkwu.entity.HighScore;
 import com.clarkwu.kickbrick.R;
 
 /**
@@ -58,12 +59,12 @@ public class GameAudio {
         audioH = (float)((float)audioH * (float)ConstantValue.SCREEN_DENSITY);
     }
 
-    public void onDraw(float startXValue,float startWValue,Canvas canvas, Paint paint){
+    public void onDraw(Canvas canvas, Paint paint){
         paint.setColor(Color.rgb(255, 0, 0));
         paint.setTextSize(MENU_TEXT_SIZE);
 
         audioTitleW = paint.measureText(AUDIO_TITLE);
-        audioTitleX = startXValue + (startWValue - audioTitleW)/2;
+        audioTitleX = HighScore.getInstance().getHighScoreTitleX() + (HighScore.getInstance().getHighScoreTitleW() - audioTitleW)/2;
         audioTitleY = ConstantValue.SCREEN_HEIGHT / 10 * 7;
 
         canvas.drawText(AUDIO_TITLE, audioTitleX, audioTitleY, paint);

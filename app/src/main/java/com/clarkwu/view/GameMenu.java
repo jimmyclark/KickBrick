@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.clarkwu.constants.ConstantValue;
 import com.clarkwu.entity.GameLife;
 import com.clarkwu.entity.GameScore;
+import com.clarkwu.entity.HighScore;
 import com.clarkwu.kickbrick.R;
 import com.clarkwu.utils.BasicUtils;
 
@@ -112,7 +113,7 @@ public class GameMenu {
         }
         titleContinueWidth = paint.measureText(CONTINUE_STR);
         titleContinueX = titleBmpX + (titleBmpWidth - paint.measureText(CONTINUE_STR))/2;
-        canvas.drawText(CONTINUE_STR,titleContinueX ,titleContinueY,paint);
+        canvas.drawText(CONTINUE_STR, titleContinueX, titleContinueY, paint);
         paint.setColor(Color.WHITE);
 
         if(rankFlag){
@@ -120,7 +121,7 @@ public class GameMenu {
         }
         titleRankWidth = paint.measureText(RANK_STR);
         titleRankX = titleBmpX + (titleBmpWidth - paint.measureText(RANK_STR))/2;
-        canvas.drawText(RANK_STR,titleRankX,titleRankY,paint);
+        canvas.drawText(RANK_STR, titleRankX, titleRankY, paint);
         paint.setColor(Color.WHITE);
 
         if(exitFlag){
@@ -128,10 +129,15 @@ public class GameMenu {
         }
         titleExitWidth = paint.measureText(EXIT_STR);
         titleExitX = titleBmpX + (titleBmpWidth - paint.measureText(EXIT_STR))/2;
-        canvas.drawText(EXIT_STR,titleExitX,titleExitY,paint);
+        canvas.drawText(EXIT_STR, titleExitX, titleExitY, paint);
         paint.setColor(Color.WHITE);
 
-        canvas.drawText(HIGH_SCORE_TEXT_STR,titleBmpX + (titleBmpWidth - paint.measureText(HIGH_SCORE_TEXT_STR))/2,titleHighScoreTextY,paint);
+        if(HighScore.getInstance().getHighScore() > 0){
+            canvas.drawText(HighScore.getInstance().getHighScore() + "", titleBmpX + (titleBmpWidth - paint.measureText(HIGH_SCORE_TEXT_STR)) / 2, titleHighScoreTextY, paint);
+        }else{
+            canvas.drawText(HIGH_SCORE_TEXT_STR, titleBmpX + (titleBmpWidth - paint.measureText(HIGH_SCORE_TEXT_STR)) / 2, titleHighScoreTextY, paint);
+        }
+
 
         canvas.drawText(FIRST_UP_TEXT_STR,titleFirstUpTextX,titleHighScoreTextY,paint);
         canvas.drawText(LIE_STR_TEXT,titleLifeTextX,titleHighScoreTextY,paint);

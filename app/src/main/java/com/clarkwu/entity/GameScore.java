@@ -34,12 +34,12 @@ public class GameScore {
         return gameScore;
     }
 
-    public void onDraw(float startXValue,float startWValue,Canvas canvas, Paint paint){
+    public void onDraw(Canvas canvas, Paint paint){
         paint.setColor(Color.rgb(255, 0, 0));
         paint.setTextSize(MENU_TEXT_SIZE);
 
         firstUpTitleW = paint.measureText(FIRST_UP_TITLE);
-        firstUpTitleX = startXValue + (startWValue - firstUpTitleW)/2;
+        firstUpTitleX = HighScore.getInstance().getHighScoreTitleX() + (HighScore.getInstance().getHighScoreTitleW() - firstUpTitleW)/2;
         firstUpTitleY = ConstantValue.SCREEN_HEIGHT / 10 * 2;
 
         canvas.drawText(FIRST_UP_TITLE, firstUpTitleX, firstUpTitleY, paint);
@@ -48,7 +48,7 @@ public class GameScore {
         float standardTextW = paint.measureText("500,000,000");
 
         firstUpTextW = paint.measureText(scoreValue + "");
-        firstUpTextX = startXValue + startWValue + 50 + standardTextW/2 - firstUpTextW/2;
+        firstUpTextX = HighScore.getInstance().getHighScoreTitleX() + HighScore.getInstance().getHighScoreTitleW() + 50 + standardTextW/2 - firstUpTextW/2;
         firstUpTextY = firstUpTitleY;
         canvas.drawText(scoreValue + "",firstUpTextX,firstUpTextY , paint);
     }

@@ -8,6 +8,7 @@ import com.clarkwu.constants.ConstantValue;
 import com.clarkwu.entity.GameLife;
 import com.clarkwu.entity.GameScore;
 import com.clarkwu.entity.GameStage;
+import com.clarkwu.entity.HighScore;
 
 /**
  * Created by Administrator on 2016/4/5.
@@ -40,7 +41,12 @@ public class GamePause {
         highScoreTextW = paint.measureText(HIGH_SCORE_TEXT_STR);
         highScoreTextX = (float)ConstantValue.SCREEN_WIDTH/2 - (float)highScoreTextW/2;
         highScoreTextY = 83;
-        canvas.drawText(HIGH_SCORE_TEXT_STR,highScoreTextX,highScoreTextY,paint);
+
+        if(HighScore.getInstance().getHighScore() > 0){
+            canvas.drawText(HighScore.getInstance().getHighScore() + "",highScoreTextX,highScoreTextY,paint);
+        }else{
+            canvas.drawText(HIGH_SCORE_TEXT_STR,highScoreTextX,highScoreTextY,paint);
+        }
 
         firstUpX = 110;
         if(GameScore.getInstance().getScoreValue() > 0){
@@ -57,12 +63,11 @@ public class GamePause {
         }
 
         paint.setColor(Color.rgb(114,16,17));
+
         highScoreW = paint.measureText(HIGH_SCORE_STR);
         highScoreX = (float)ConstantValue.SCREEN_WIDTH/2 - (float)highScoreW/2;
         highScoreY = 43;
-
         canvas.drawText(HIGH_SCORE_STR,highScoreX,highScoreY,paint);
-
         firstUpTextX = 50;
         canvas.drawText(FIRST_UP,firstUpTextX,highScoreY,paint);
 

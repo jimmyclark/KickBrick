@@ -11,8 +11,6 @@ public class ConstantValue {
     public static int SCREEN_HEIGHT;
     public static float SCREEN_DENSITY;
 
-    public static final int DEFAULT_SCREEN_WIDTH = 1280;
-    public static final int DEFAULT_SCREEN_HEIGHT = 720;
     public static final float DEFAULT_DENSITY = 1.78f;//1280/720
 
     public static final int GAMEMENU_STATE = 1;

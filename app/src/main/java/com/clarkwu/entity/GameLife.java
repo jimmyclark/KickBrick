@@ -49,16 +49,16 @@ public class GameLife {
         gameLifeH = (float)((float)gameLifeH * (float)ConstantValue.SCREEN_DENSITY);
     }
 
-    public void draw(float startXValue,float startWValue,Canvas canvas, Paint paint){
+    public void draw(Canvas canvas, Paint paint){
         paint.setColor(Color.rgb(255, 0, 0));
         paint.setTextSize(MENU_TEXT_SIZE);
 
         lifeTitleW = paint.measureText(LIFE_TITLE);
-        lifeTitleX = startXValue + (startWValue - lifeTitleW)/2;
+        lifeTitleX = HighScore.getInstance().getHighScoreTitleX() + (HighScore.getInstance().getHighScoreTitleW() - lifeTitleW)/2;
         lifeTitleY = (ConstantValue.SCREEN_HEIGHT / 10 * 3 + ConstantValue.SCREEN_HEIGHT / 10 * 4 )/2 + 10;
         canvas.drawText(LIFE_TITLE, lifeTitleX, lifeTitleY,paint);
 
-        gameLifeX =  startXValue + startWValue + 20;
+        gameLifeX =  HighScore.getInstance().getHighScoreTitleX() + HighScore.getInstance().getHighScoreTitleW() + 20;
 
         gameLifeY = ConstantValue.SCREEN_HEIGHT/10 * 3 ;
         for(int i = 0 ;i< lifeValue;i++){
