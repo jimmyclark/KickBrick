@@ -23,6 +23,8 @@ public class GameArea {
     private int[] gameBgNames;
     private Brick[] bricks;
     private Bitmap gameRoomBg;
+    private Bitmap rectBg;
+    private float rectW,rectH;
 
     private MyBrick myBrick;
     private MyBall myBall;
@@ -47,25 +49,95 @@ public class GameArea {
         gameRoomBgW = (float)((float)gameRoomBgW * (float)ConstantValue.SCREEN_DENSITY);
         gameRoomBgH = (float)((float)gameRoomBgH * (float)ConstantValue.SCREEN_DENSITY);
 
+        rectBg = BitmapFactory.decodeResource(ConstantValue.main.getResources(),R.mipmap.rect1201750);
+        rectW = ((float)rectBg.getWidth() / (float)ConstantValue.DEFAULT_DENSITY) ;
+        rectH = (float)rectBg.getHeight() / (float)ConstantValue.DEFAULT_DENSITY;
+
+        rectW = (float)((float)rectW * (float)ConstantValue.SCREEN_DENSITY);
+        rectH = (float)((float)rectH * (float)ConstantValue.SCREEN_DENSITY);
+
         myBrick = new MyBrick();
         myBrick.init();
 
         myBall = new MyBall();
         myBall.init();
 
+        int currentSplitW = 7;
         bricks = new Brick[]{
-                new Brick((gameRoomBgW - 11 * 4 - 5*2)/11 * 0 + 5,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-            new Brick((gameRoomBgW - 11 * 4-5*2)+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*2+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*3+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*4+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*5+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*6+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*7+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*8+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*9+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199)),
-                new Brick((gameRoomBgW - 11 * 4-5*2)/11*10+4,ConstantValue.SCREEN_HEIGHT / 35 * 5, Color.rgb(189, 190, 199))
+              new Brick(0+rectW/2+4,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*1+currentSplitW,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*2+currentSplitW*2,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*3+currentSplitW*3,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*4+currentSplitW*4,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*5+currentSplitW*5,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*6+currentSplitW*6,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*7+currentSplitW*7,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*8+currentSplitW*8,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*9+currentSplitW*9,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+              new Brick(rectW/2+4+rectW*10+currentSplitW*10,ConstantValue.SCREEN_HEIGHT/40*7,R.mipmap.rect193195197),
+
+                new Brick(0+rectW/2+4,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*1+currentSplitW,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*2+currentSplitW*2,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*3+currentSplitW*3,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*4+currentSplitW*4,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*5+currentSplitW*5,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*6+currentSplitW*6,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*7+currentSplitW*7,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*8+currentSplitW*8,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*9+currentSplitW*9,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+                new Brick(rectW/2+4+rectW*10+currentSplitW*10,ConstantValue.SCREEN_HEIGHT/40*8,R.mipmap.rect2067557),
+
+                new Brick(0+rectW/2+4,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*1+currentSplitW,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*2+currentSplitW*2,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*3+currentSplitW*3,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*4+currentSplitW*4,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*5+currentSplitW*5,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*6+currentSplitW*6,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*7+currentSplitW*7,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*8+currentSplitW*8,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*9+currentSplitW*9,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+                new Brick(rectW/2+4+rectW*10+currentSplitW*10,ConstantValue.SCREEN_HEIGHT/40*9,R.mipmap.rect5799225),
+
+                new Brick(0+rectW/2+4,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*1+currentSplitW,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*2+currentSplitW*2,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*3+currentSplitW*3,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*4+currentSplitW*4,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*5+currentSplitW*5,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*6+currentSplitW*6,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*7+currentSplitW*7,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*8+currentSplitW*8,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*9+currentSplitW*9,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+                new Brick(rectW/2+4+rectW*10+currentSplitW*10,ConstantValue.SCREEN_HEIGHT/40*10,R.mipmap.rect23115755),
+
+                new Brick(0+rectW/2+4,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*1+currentSplitW,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*2+currentSplitW*2,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*3+currentSplitW*3,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*4+currentSplitW*4,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*5+currentSplitW*5,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*6+currentSplitW*6,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*7+currentSplitW*7,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*8+currentSplitW*8,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*9+currentSplitW*9,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+                new Brick(rectW/2+4+rectW*10+currentSplitW*10,ConstantValue.SCREEN_HEIGHT/40*11,R.mipmap.rect255139194),
+
+                new Brick(0+rectW/2+4,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*1+currentSplitW,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*2+currentSplitW*2,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*3+currentSplitW*3,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*4+currentSplitW*4,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*5+currentSplitW*5,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*6+currentSplitW*6,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*7+currentSplitW*7,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*8+currentSplitW*8,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*9+currentSplitW*9,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+                new Brick(rectW/2+4+rectW*10+currentSplitW*10,ConstantValue.SCREEN_HEIGHT/40*12,R.mipmap.rect1201750),
+
         };
+
 
     }
 
