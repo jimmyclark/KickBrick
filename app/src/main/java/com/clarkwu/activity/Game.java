@@ -124,6 +124,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback,Runnable
             case ConstantValue.GAMEPAUSE_STATE:
                 gamePause.logic();
                 break;
+            case ConstantValue.GAMEING_STATE:
+                gameRoom.logic();
+                break;
         }
     }
 

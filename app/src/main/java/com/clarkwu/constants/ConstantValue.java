@@ -23,6 +23,9 @@ public class ConstantValue {
     public static MyHandler myHandler;
 
     public static int MAX_LIFE = 6;
+    public static final int RATE = 30;
+
+    public static int brick_num = 0;
 
     public static MainActivity main;
 

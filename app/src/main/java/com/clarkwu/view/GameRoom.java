@@ -56,4 +56,8 @@ public class GameRoom {
        GameArea.getInstance().onTouchEvent(event);
     }
 
+    public void logic(){
+        GameArea.getInstance().logic();
+    }
+
 }
